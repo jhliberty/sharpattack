@@ -1,6 +1,20 @@
-$body-bg:  #3498db;
-$navbar-default-bg: #2980b9;
-$navbar-default-link-color: white;
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 
+
+$body-bg:  #bdc3c7;
+$font-family-sans-serif: 'Droid Sans', 'Helvetica', 'sans-serif';
+$navbar-default-bg: #ecf0f1;
+$navbar-default-link-color: black;
+$navbar-default-brand-color: #34495e;
+$brand-primary: #34495e;
+$jumbotron-bg: #ecf0f1;
 
 @import 'bootstrap';
+
+.center {
+	text-align: center;
+}
+
+.navbar-brand {
+	font-weight: bold;
+}
