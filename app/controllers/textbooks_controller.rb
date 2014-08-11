@@ -1,5 +1,7 @@
 class TextbooksController < ApplicationController
   before_action :set_textbook, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show,]
 
   def index
     @textbooks = Textbook.all
@@ -9,14 +11,14 @@ class TextbooksController < ApplicationController
   end
 
   def new
-    @textbook = Textbook.new
+    @textbook = current_user.textbooks.build
   end
 
   def edit
   end
 
   def create
-    @textbook = Textbook.new(textbook_params)
+    @textbook = current_user.textbooks.build(textbook_params)
     if @textbook.save
       redirect_to @textbook, notice: 'Textbook was successfully created.' 
     else
@@ -41,6 +43,11 @@ class TextbooksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_textbook
       @textbook = Textbook.find(params[:id])
+    end
+
+    def correct_user
+      @textbook = current_user.textbooks.find_by(id: params[:id])
+      redirect_to textbooks_path, notice: "This is not your textbook!" if @textbook.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

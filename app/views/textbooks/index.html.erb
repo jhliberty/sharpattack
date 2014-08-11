@@ -5,6 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,14 +15,18 @@
       <tr>
         <td><%= textbook.Title %></td>
         <td><%= textbook.Description %></td>
+        <td><%= textbook.user.email if textbook.user %></td>
         <td><%= link_to 'Show', textbook %></td>
-        <td><%= link_to 'Edit', edit_textbook_path(textbook) %></td>
-        <td><%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if textbook.user == current_user %>
+          <td><%= link_to 'Edit', edit_textbook_path(textbook) %></td>
+          <td><%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Textbook', new_textbook_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Textbook', new_textbook_path %>
+<% end %>

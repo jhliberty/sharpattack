@@ -10,5 +10,7 @@
   <%= @textbook.Description %>
 </p>
 
-<%= link_to 'Edit', edit_textbook_path(@textbook) %> |
+<% if @textbook.user == current_user %>
+	<%= link_to 'Edit', edit_textbook_path(@textbook) %> |
+	<% end %>
 <%= link_to 'Back', textbooks_path %>
