@@ -52,6 +52,6 @@ class TextbooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def textbook_params
-      params.require(:textbook).permit(:Title, :Description)
+      params.require(:textbook).permit(:Title, :Description, :image)
     end
 end
