@@ -14,7 +14,7 @@
   <tbody>
     <% @textbooks.each do |textbook| %>
       <tr>
-        <td><%= image_tag textbook.image.url(:medium) %></td>
+        <td><%= image_tag textbook.image.url(:thumb) %></td>
         <td><%= textbook.Title %></td>
         <td><%= textbook.Description %></td>
         <td><%= textbook.user.email if textbook.user %></td>
