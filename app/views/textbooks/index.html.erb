@@ -1,34 +1,21 @@
-<h1>Listing textbooks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @textbooks.each do |textbook| %>
-      <tr>
-        <td><%= image_tag textbook.image.url(:thumb) %></td>
-        <td><%= textbook.Title %></td>
-        <td><%= textbook.Description %></td>
-        <td><%= textbook.user.email if textbook.user %></td>
-        <td><%= link_to 'Show', textbook %></td>
-        <% if textbook.user == current_user %>
-          <td><%= link_to 'Edit', edit_textbook_path(textbook) %></td>
-          <td><%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 <% if user_signed_in? %>
   <%= link_to 'New Textbook', new_textbook_path %>
 <% end %>
+
+<div id="textbooks" class="transitions-enabled">
+  <% @textbooks.each do |textbook| %>
+    <div class="box panel panel-default">
+      <%= image_tag textbook.image.url(:thumb) %>
+      <div class="panel-body">
+        <%= textbook.Title %>
+        <%= textbook.Description %>
+        <%= textbook.user.email if textbook.user %>
+        <%= link_to 'Show', textbook %>
+        <% if textbook.user == current_user %>
+          <%= link_to 'Edit', edit_textbook_path(textbook) %>
+          <%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
