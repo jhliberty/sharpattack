@@ -1,16 +1,39 @@
-<%= image_tag @textbook.image.url(:medium) %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @textbook.Title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @textbook.Description %>
-</p>
-
-<% if @textbook.user == current_user %>
-	<%= link_to 'Edit', edit_textbook_path(@textbook) %> |
+<% if user_signed_in? %>
+  <%= link_to new_textbook_path, class: "btn btn-primary" do %>
+  <span class="glyphicon glyphicon-plus"></span> New tekstboox
+  <% end %>
+  <%= link_to textbooks_path, class: "btn btn-primary" do %>
+		<span class="glyphicon glyphicon-chevron-left"></span> 
+		Back
 	<% end %>
-<%= link_to 'Back', textbooks_path %>
+<% end %>
+
+<div class="box panel panel-default">
+	<%= image_tag @textbook.image.url(:medium) %>
+	<div class="panel-body">
+		<p>
+		  <strong>Title:</strong>
+		  <%= @textbook.Title %>
+		</p>
+
+		<p>
+		  <strong>Description:</strong><br/>
+		  	<p><%= @textbook.Description %></p>
+		</p>
+
+		<p>
+		  <strong>User:</strong>
+		  <%= @textbook.user.email if @textbook.user %>
+		</p>
+		<% if @textbook.user == current_user %>
+			<%= link_to edit_textbook_path(@textbook) do %>
+    		<span class="glyphicon glyphicon-edit"></span>
+   		 	Edit
+  		<% end %>
+  		<%= link_to @textbook, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <span class="glyphicon glyphicon-trash"></span>
+        Delete
+      <% end %>
+		<% end %>
+	</div>
+</div>

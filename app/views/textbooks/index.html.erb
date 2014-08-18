@@ -1,19 +1,26 @@
 <% if user_signed_in? %>
-  <%= link_to 'New Textbook', new_textbook_path %>
+  <%= link_to new_textbook_path, class: "btn btn-primary" do %>
+  <span class="glyphicon glyphicon-plus"></span> New tekstboox
+  <% end %>
 <% end %>
 
 <div id="textbooks" class="transitions-enabled">
   <% @textbooks.each do |textbook| %>
     <div class="box panel panel-default">
-      <%= image_tag textbook.image.url(:thumb) %>
+      <%= link_to image_tag(textbook.image.url(:medium)), textbook %>
       <div class="panel-body">
-        <%= textbook.Title %>
-        <%= textbook.Description %>
-        <%= textbook.user.email if textbook.user %>
-        <%= link_to 'Show', textbook %>
+        <strong><%= textbook.Title %></strong><br/>
         <% if textbook.user == current_user %>
-          <%= link_to 'Edit', edit_textbook_path(textbook) %>
-          <%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <div class="actions">
+            <%= link_to edit_textbook_path(textbook) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+              Edit
+            <% end %>
+            <%= link_to textbook, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+              Delete
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>
