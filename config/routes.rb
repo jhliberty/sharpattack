@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   resources :textbooks
 
   devise_for :users
-  root "pages#home"
+  root "textbooks#index"
   get "about" => "pages#about"
-  get "browse" => "pages#browse"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
