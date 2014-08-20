@@ -4,7 +4,7 @@ class TextbooksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show,]
 
   def index
-    @textbooks = Textbook.all
+    @textbooks = Textbook.all.order("created_at DESC").limit(50)
   end
 
   def show
