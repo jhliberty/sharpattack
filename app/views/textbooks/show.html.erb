@@ -23,7 +23,7 @@
 
 		<p>
 		  <strong>User:</strong>
-		  <%= @textbook.user.email if @textbook.user %>
+		  <%= @textbook.user.name if @textbook.user %>
 		</p>
 		<% if @textbook.user == current_user %>
 			<%= link_to edit_textbook_path(@textbook) do %>
