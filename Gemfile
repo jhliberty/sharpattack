@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.2.0.1'
 gem 'devise', '~> 3.2.4'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk', '~> 1.51'
@@ -22,7 +22,7 @@ group :development, :test do
 end
 
 group :production do
-     gem 'pg'
+     gem 'pg', '~> 0.17.1'
      gem 'rails_12factor'
 end
 

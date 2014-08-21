@@ -160,7 +160,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk (~> 1.51)
-  bootstrap-sass
+  bootstrap-sass (~> 3.2.0.1)
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.4)
   jbuilder (~> 2.0)
@@ -168,7 +168,7 @@ DEPENDENCIES
   jquery-turbolinks
   masonry-rails (~> 0.2.0)
   paperclip!
-  pg
+  pg (~> 0.17.1)
   rails (= 4.1.4)
   rails_12factor
   sass-rails (~> 4.0.3)
