@@ -4,7 +4,7 @@ class TextbooksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show,]
 
   def index
-    @textbooks = Textbook.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    @textbooks = Textbook.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
   end
 
   def show
