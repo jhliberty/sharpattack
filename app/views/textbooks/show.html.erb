@@ -25,7 +25,7 @@
 		  <strong>User:</strong>
 		  <%= @textbook.user.name if @textbook.user %>
 		</p>
-		<% if @textbook.user == current_user %>
+		<% if current_user && @textbook.user == current_user %>
 			<%= link_to edit_textbook_path(@textbook) do %>
     		<span class="glyphicon glyphicon-edit"></span>
    		 	Edit

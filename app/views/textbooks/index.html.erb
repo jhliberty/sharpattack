@@ -12,7 +12,7 @@
       <%= link_to image_tag(textbook.image.url(:medium)), textbook %>
       <div class="panel-body">
         <strong><%= textbook.Title %></strong><br/>
-        <% if textbook.user == current_user %>
+        <% if current_user && textbook.user == current_user %>
           <div class="actions">
             <%= link_to edit_textbook_path(textbook) do %>
               <span class="glyphicon glyphicon-edit"></span>
